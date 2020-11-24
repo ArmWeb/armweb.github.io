@@ -8,9 +8,10 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
     <style>
     #panorama {
-        width: 1600px;
+        width: 3200px;
         height: 800px;
         max-width: 100%;
+        max-height: 100vh;
     }
 	div.pnlm-tooltip span {
 		max-width: inherit;
@@ -26,24 +27,138 @@
 <body>
 
 <div id="panorama"></div>
+<p>Text</p>
 <script>
 
 pannellum.viewer('panorama', {   
     "default": {
-        "firstScene": "library",
+        "firstScene": "entrance",
         // "author": "Matthew Petroff",
         "sceneFadeDuration": 1000,
         "autoLoad": true
     },
     
     "scenes": {
+        "entrance": {
+            "title": "Elisabethschule Marburg",
+            "hfov": 110,
+            "pitch": 0,
+            "yaw": 0,
+            "compass": true,
+			"type": "equirectangular",
+			"panorama": "./entrance.jpg",
+            "multiRes": {
+                "fallbackPath": "/fallback/%s",
+                "extension": "jpg",
+                "tileResolution": 512,
+                "maxLevel": 6,
+                "cubeResolution": 8432
+            },
+            "hotSpots": [
+                {
+                    "pitch": -5,
+                    "yaw": 120,
+                    "type": "scene",
+                    "sceneId": "yard1"
+                },
+                {
+                    "pitch": 2,
+                    "yaw": -14,
+                    "type": "scene",
+                    "sceneId": "entrance2"
+                }
+            ]
+        },
+        "entrance2": {
+            "title": "Elisabethschule Marburg",
+            "hfov": 110,
+            "pitch": 0,
+            "yaw": 0,
+            "compass": true,
+			"type": "equirectangular",
+			"panorama": "./entrance2.jpg",
+            "multiRes": {
+                "fallbackPath": "/fallback/%s",
+                "extension": "jpg",
+                "tileResolution": 512,
+                "maxLevel": 6,
+                "cubeResolution": 8432
+            },
+            "hotSpots": [
+                {
+                    "pitch": -5,
+                    "yaw": -150,
+                    "type": "scene",
+                    "sceneId": "entrance"
+                },
+                {
+                    "pitch": -5,
+                    "yaw": 7,
+                    "type": "scene",
+                    "sceneId": "library"
+                }
+            ]
+        },
+        "yard1": {
+            "title": "Elisabethschule Marburg",
+            "hfov": 110,
+            "pitch": 0,
+            "yaw": 0,
+            "compass": true,
+			"type": "equirectangular",
+			"panorama": "./yard1.jpg",
+            "multiRes": {
+                "fallbackPath": "/fallback/%s",
+                "extension": "jpg",
+                "tileResolution": 512,
+                "maxLevel": 6,
+                "cubeResolution": 8432
+            },
+            "hotSpots": [
+                {
+                    "pitch": -5,
+                    "yaw": 100,
+                    "type": "scene",
+                    "sceneId": "out_play"
+                },
+                {
+                    "pitch": 5,
+                    "yaw": -140,
+                    "type": "scene",
+                    "sceneId": "entrance"
+                }
+            ]
+        },
+        "out_play": {
+            "title": "Elisabethschule Marburg",
+            "hfov": 110,
+            "pitch": 0,
+            "yaw": 0,
+            "compass": true,
+			"type": "equirectangular",
+			"panorama": "./out_play.jpg",
+            "multiRes": {
+                "fallbackPath": "/fallback/%s",
+                "extension": "jpg",
+                "tileResolution": 512,
+                "maxLevel": 6,
+                "cubeResolution": 8432
+            },
+            "hotSpots": [
+                {
+                    "pitch": -5,
+                    "yaw": -180,
+                    "type": "scene",
+                    "sceneId": "yard1"
+                }
+            ]
+        },
         "library": {
-            // "title": "George Peabody Library",
+            "title": "Elisabethschule Marburg",
             "hfov": 110,
             "pitch": -5,
             "yaw": -80,
             "compass": true,
-            "northOffset": 289,
 			"type": "equirectangular",
 			"panorama": "./imageonline-co-overlayed-image.png",
             "multiRes": {
@@ -60,7 +175,13 @@ pannellum.viewer('panorama', {
                     "type": "info",
                     "cssClass": "customInfoIcon",
                     "text": '<div>Eagle<video width="400px" controls src="eagle.mp4"></video></div>'
-                }
+                },
+                {
+                    "pitch": -5,
+                    "yaw": 36,
+                    "type": "scene",
+                    "sceneId": "entrance2"
+                },
             ]
         }
     }
